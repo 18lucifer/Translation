@@ -16,7 +16,7 @@ import com.TranslationApi.Translation.Services.TranslatorService;
 
 
 @RestController
-@RequestMapping(value = "/translatorcontroller1")
+@RequestMapping(value = "/translatorcontroller")
 public class Translatorcontroller {
 
 	@Autowired
