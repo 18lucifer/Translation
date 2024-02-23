@@ -26,12 +26,16 @@ public class Translatorcontroller {
 	public Map translateText(@RequestBody Map jsonMap) throws Exception {
 		String fromLang = "en";
 		String toLang = "fr";
-		String text = jsonMap.get("text").toString();
+		String text = jsonMap.get("text")==null?"":jsonMap.get("text").toString();
 		Map res = new HashMap();
 		try {
-			res = translatorservice.translate(fromLang, toLang, text);
+			if(!jsonMap.keySet().contains("text")) {
+				res.put("error", "Key name should be text!!");
+			}else {
+				res = translatorservice.translate(fromLang, toLang, text);
+			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.printStackTrace(); 
 		}
 		return res;
 
